@@ -1,7 +1,7 @@
 
-# Titre du laboratoire
+# Serveur de fichiers (partie 1)
 
-Auteurs: Jane Doe, John Doe
+Auteurs: Pierre Kohler, Jeremy Zerbib
 
 ## Description des fonctionnalités du logiciel
 
@@ -9,12 +9,19 @@ Auteurs: Jane Doe, John Doe
 
 ## Choix d'implémentation
 
-Comment avez-vous abordé le problème, quels choix avez-vous fait, quelle 
-décomposition avez-vous choisie, quelles variables ont dû être protégées, ...
+### MessageBuffer
 
+### RequestDispatcherThread
+
+### RequestHandler (héritant de thread)
 
 
 ## Tests effectués
 
+### Comparez la performance de cette version concurrente avec celle de la version de base. Constatez vous une amélioration ?
 
-Description de chaque test, et information sur le fait qu'il ait passé ou non
+### Que se passe t il lorsqu'on lance un nombre de requêtes très important (par ex. 10’000), et comment l’expliquez vous ?
+
+### Comment pourrait on protéger le serveur de cet effet néfaste ?
+
+
