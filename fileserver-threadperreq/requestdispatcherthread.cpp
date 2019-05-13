@@ -1,5 +1,6 @@
 #include "requestdispatcherthread.h"
 #include <QDebug>
+#include "requesthandler.h"
 
 void RequestDispatcherThread::run()
 {
@@ -9,5 +10,7 @@ void RequestDispatcherThread::run()
         Request req = requests->get();   // block until a response is available
         if (hasDebugLog)
             qDebug() << "Got a request'" << req.getFilePath() << "', dispatching...";
+        RequestHandler reqHandler (req, hasDebugLog);
+        reqHandler.start();
     }
 }
