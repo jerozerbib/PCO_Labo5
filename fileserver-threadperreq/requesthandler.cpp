@@ -13,3 +13,9 @@ Response RequestHandler::handle()
         return Response(request, "File not found!");
     }
 }
+
+void RequestHandler::run() {
+    while(true) {
+        handle();
+    }
+}

@@ -3,7 +3,9 @@
 #include "request.h"
 #include "response.h"
 
-class RequestHandler
+#include <QThread>
+
+class RequestHandler : public QThread
 {
 private:
     Request request;
@@ -13,6 +15,10 @@ public:
     RequestHandler(Request request, bool hasDebugLog): request(request), hasDebugLog(hasDebugLog) {}
 
     Response handle();
+    void run();
+
+signals:
+    void requestHandled();
 };
 
 #endif // REQUESTHANDLER_H

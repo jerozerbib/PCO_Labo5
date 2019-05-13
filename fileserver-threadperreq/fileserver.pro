@@ -18,6 +18,7 @@ SOURCES += \
 HEADERS += \
     fileserver.h \
     filereader.h \
+    messagebuffer.h \
     requestdispatcherthread.h \
     response.h \
     abstractbuffer.h \
