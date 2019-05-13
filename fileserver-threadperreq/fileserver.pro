@@ -11,12 +11,14 @@ SOURCES += \
     main.cpp \
     fileserver.cpp \
     filereader.cpp \
+    requestdispatcherthread.cpp \
     requesthandler.cpp \
     responsedispatcherthread.cpp
 
 HEADERS += \
     fileserver.h \
     filereader.h \
+    requestdispatcherthread.h \
     response.h \
     abstractbuffer.h \
     request.h \
