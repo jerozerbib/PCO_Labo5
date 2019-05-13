@@ -3,9 +3,11 @@
 #include <QObject>
 #include <QThread>
 #include <QDebug>
+#include <QVector>
 #include "abstractbuffer.h"
 #include "request.h"
 #include "response.h"
+#include "requesthandler.h"
 
 class RequestDispatcherThread: public QThread
 {
@@ -24,6 +26,7 @@ protected:
 private:
     AbstractBuffer<Request>* requests;
     AbstractBuffer<Response>* responses;
+    // QVector<RequestHandler*> handlers;
     bool hasDebugLog;
 };
 

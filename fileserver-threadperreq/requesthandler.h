@@ -5,6 +5,7 @@
 #include "messagebuffer.h"
 
 #include <QThread>
+#include <QObject>
 
 class RequestHandler : public QThread
 {
