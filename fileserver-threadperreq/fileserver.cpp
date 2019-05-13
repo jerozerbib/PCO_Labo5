@@ -53,6 +53,7 @@
 #include <QDebug>
 #include "filereader.h"
 #include "response.h"
+#include "messagebuffer.h"
 #include "request.h"
 
 FileServer::FileServer(quint16 port, bool debug, QObject *parent) :
@@ -61,9 +62,11 @@ FileServer::FileServer(quint16 port, bool debug, QObject *parent) :
                                             QWebSocketServer::NonSecureMode, this)),
     hasDebugLog(debug)
 {
-    // requests = new... TODO
-    // responses = new... TODO
-    // reqDispatcher = new... TODO
+    requests  = new MessageBuffer<Request>(20);
+    responses = new MessageBuffer<Response>(20);
+
+    reqDispatcher = new RequestDispatcherThread(requests, hasDebugLog);
+    reqDispatcher->start();
     respDispatcher = new ResponseDispatcherThread(responses, hasDebugLog);
     respDispatcher->start();
     connect(respDispatcher, SIGNAL(responseReady(Response)), this, SLOT(handleResponse(Response)));
