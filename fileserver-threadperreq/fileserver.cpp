@@ -65,7 +65,7 @@ FileServer::FileServer(quint16 port, bool debug, QObject *parent) :
     requests  = new MessageBuffer<Request>(20);
     responses = new MessageBuffer<Response>(20);
 
-    reqDispatcher = new RequestDispatcherThread(requests, hasDebugLog);
+    reqDispatcher = new RequestDispatcherThread(requests, responses, hasDebugLog);
     reqDispatcher->start();
     respDispatcher = new ResponseDispatcherThread(responses, hasDebugLog);
     respDispatcher->start();
@@ -137,4 +137,9 @@ void FileServer::handleResponse(Response response)
         qDebug() << "Sending response:" << json;
     }
     clients[response.getRequest().getClientId()]->sendTextMessage(response.toJson());
+}
+
+void FileServer::addResponse(Response response)
+{
+    responses->put(response);
 }

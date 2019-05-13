@@ -77,6 +77,7 @@ public slots:
     void processBinaryMessage(QByteArray message);
     void socketDisconnected();
     void handleResponse(Response response);
+    void addResponse(Response response);
 
 private:
     QWebSocketServer *websocketServer;

@@ -15,7 +15,6 @@ Response RequestHandler::handle()
 }
 
 void RequestHandler::run() {
-    while(true) {
-        handle();
-    }
+    Response response = handle();
+    responses->put(response);
 }

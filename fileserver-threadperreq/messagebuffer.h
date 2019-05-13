@@ -24,14 +24,14 @@ public:
     }
 
     T get() {
-        waitRead().lock();
+        waitRead.lock();
         waitItem.acquire();
 
         T item = buffer[currentReadPos];
         currentReadPos = ++currentReadPos % size;
 
         waitSpace.release();
-        waitRead().unlock();
+        waitRead.unlock();
 
         return item;
     }
